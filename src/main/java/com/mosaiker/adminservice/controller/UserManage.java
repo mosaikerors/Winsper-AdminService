@@ -36,7 +36,7 @@ public class UserManage {
     Long uId = param.getLong("uId");
     User user = userInfoService.findUserByUId(uId);
     if (user != null) {
-      int i = ((user.getStatus() == 0) ? 1 : 0);
+      int i = -user.getStatus();
       user.setStatus(i);
       userInfoService.update(user);
       result.put("status", i);
