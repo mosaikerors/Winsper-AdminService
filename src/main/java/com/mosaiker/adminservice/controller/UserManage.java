@@ -1,5 +1,6 @@
 package com.mosaiker.adminservice.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mosaiker.adminservice.service.UserInfoService;
 import com.mosaiker.adminservice.entity.User;
@@ -19,9 +20,18 @@ public class UserManage {
   @RequestMapping(value = "/userList", method = RequestMethod.GET)
   public JSONObject findAllUser() {
     JSONObject result = new JSONObject();
+    JSONArray userArray = new JSONArray();
     List<User> users = userInfoService.findAll();
-    if (users == null) {
-      result.put("users", users);
+    if (users != null) {
+      for(User user : users) {
+        JSONObject oneUser = new JSONObject();
+        oneUser.put("uId", user.getUId());
+        oneUser.put("username",user.getUsername());
+        oneUser.put("phone",user.getPhone());
+        oneUser.put("status",user.getStatus());
+        userArray.add(oneUser);
+      }
+      result.put("userList",userArray);
       result.put("message", "ok");
       return result;
     } else {
@@ -31,9 +41,9 @@ public class UserManage {
   }
 
   @RequestMapping(value = "/manage", method = RequestMethod.PUT)
-  public JSONObject changeStatus(@RequestParam JSONObject param) {
+  public JSONObject changeStatus(@RequestBody JSONObject param) {
     JSONObject result = new JSONObject();
-    Long uId = param.getLong("uId");
+    Long uId = Long.parseLong(param.getString("uId"));
     User user = userInfoService.findUserByUId(uId);
     if (user != null) {
       int i = -user.getStatus();
@@ -48,21 +58,4 @@ public class UserManage {
     }
   }
 
-  @RequestMapping(value = "/viewDetail", method = RequestMethod.GET)
-  public JSONObject showDetail(@RequestBody JSONObject param) {
-    JSONObject result = new JSONObject();
-    Long uId = param.getLong("uId");
-    User user = userInfoService.findUserByUId(uId);
-    if (user != null) {
-      result.put("uId", user.getUId());
-      result.put("username", user.getUsername());
-      result.put("phone", user.getPhone());
-      result.put("status", user.getStatus());
-      result.put("message", "ok");
-      return result;
-    } else {
-      result.put("message", "无法获取该用户信息");
-      return result;
-    }
-  }
 }
