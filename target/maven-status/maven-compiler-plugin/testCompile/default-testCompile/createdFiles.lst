@@ -1,0 +1,3 @@
+com\mosaiker\adminservice\AdminServiceApplicationTests.class
+com\mosaiker\adminservice\controller\UserManageTest.class
+com\mosaiker\adminservice\service\UserInfoServiceImpleTest.class

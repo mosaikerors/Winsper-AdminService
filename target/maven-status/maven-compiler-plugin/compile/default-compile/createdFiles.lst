@@ -1,0 +1,7 @@
+com\mosaiker\adminservice\controller\UserManage.class
+com\mosaiker\adminservice\AdminServiceApplication.class
+com\mosaiker\adminservice\service\UserInfoService.class
+com\mosaiker\adminservice\service\UserInfoServiceImple.class
+com\mosaiker\adminservice\entity\User.class
+com\mosaiker\adminservice\config\SpringFoxConfig.class
+com\mosaiker\adminservice\repository\UserInfoRepository.class
