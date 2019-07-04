@@ -101,7 +101,7 @@ public class UserManageTest {
 
     when(userInfoService.update(newUser)).thenReturn(newUser);
 
-    String expected1 = "{\"message\":\"ok\",\"status\":-1}";
+    String expected1 = "<JSONObject><message>ok</message><status>-1</status></JSONObject>";
     JSONObject mockParam = new JSONObject();
     mockParam.put("uId", "1000");
     mockMvc.perform(MockMvcRequestBuilders.put("/admin/manage")
@@ -113,7 +113,7 @@ public class UserManageTest {
     when(userInfoService.findUserByUId(2000L)).thenReturn(null);
     mockParam.clear();
     mockParam.put("uId", "2000");
-    String expected2 = "{\"message\":\"无法获取该用户信息\"}";
+    String expected2 = "<JSONObject><message>无法获取该用户信息</message></JSONObject>";
     mockMvc.perform(MockMvcRequestBuilders.put("/admin/manage")
         .contentType(MediaType.APPLICATION_JSON).content(mockParam.toJSONString()))
         .andExpect(MockMvcResultMatchers.status().isOk())
