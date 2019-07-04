@@ -18,7 +18,7 @@ public class SpringFoxConfig {
   public Docket apiDocket() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.mosaiker.adminservice"))
+        .apis(RequestHandlerSelectors.basePackage("com.mosaiker"))
         .paths(PathSelectors.any())
         .build()
         .apiInfo(getApiInfo());

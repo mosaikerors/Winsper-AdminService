@@ -20,7 +20,7 @@ steps:
     host: 101.132.176.33
     username: root
     password:
-      from_secret: xyx_password
+      from_secret: 101.132.176.33
     rm: true
     target: /Winsper/admin-service
     source:
@@ -33,7 +33,7 @@ steps:
     host: 101.132.176.33
     username: root
     password:
-      from_secret: xyx_password
+      from_secret: 101.132.176.33
     script:
     - cd /Winsper/admin-service/target
     - cp ../Dockerfile .

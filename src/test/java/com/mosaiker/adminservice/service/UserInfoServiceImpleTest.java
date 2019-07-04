@@ -46,8 +46,8 @@ public class UserInfoServiceImpleTest {
    */
   @Test
   public void testFindAll() throws Exception {
-    User user1 = new User(10000, "username", "17037041703", 1);
-    User user2 = new User(10001, "username", "17037031703", 1);
+    User user1 = new User(10000L, "username", "17037041703", 1);
+    User user2 = new User(10001L, "username", "17037031703", 1);
     List<User> userlist = Arrays.asList(user1, user2);
     // 设置模拟对象的返回预期值
     when(userInfoRepository.findAll()).thenReturn(userlist);
@@ -62,7 +62,7 @@ public class UserInfoServiceImpleTest {
 
   @Test
   public void testFindUserByUId() throws Exception {
-    User user = new User(10001, "username", "17037041703", 1);
+    User user = new User(10001L, "username", "17037041703", 1);
     when(userInfoRepository.findUserByUId(10001L)).thenReturn(user);
     User result = userInfoServiceImple.findUserByUId(10001L);
     // 验证模拟对象的fetchPerson(1)方法是否被调用了一次
@@ -73,7 +73,7 @@ public class UserInfoServiceImpleTest {
 
   @Test
   public void testUpdate() throws Exception {
-    User user = new User(10000, "username", "130111444777", 1);
+    User user = new User(10000L, "username", "130111444777", 1);
     when(userInfoRepository.save(user)).thenReturn(user);
     User result = userInfoServiceImple.update(user);
     assertThat(user, equalTo(result));
