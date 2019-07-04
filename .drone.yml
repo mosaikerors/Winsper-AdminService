@@ -11,16 +11,16 @@ steps:
 #   path: /drone/src/back-end/src/main/resources/application.yml
   commands:
   - mvn clean
-  - mvn package
+  - mvn package -Dmaven.test.skip=true
   - echo "test and package admin-service completed 🙂🙂🙂"
 
 - name: upload
   image: appleboy/drone-scp
   settings:
-    host: 101.132.176.33
+    host: 47.103.0.246
     username: root
     password:
-      from_secret: 101.132.176.33
+      from_secret: yjy_password
     rm: true
     target: /Winsper/admin-service
     source:
@@ -30,10 +30,10 @@ steps:
 - name: deploy
   image: appleboy/drone-ssh
   settings:
-    host: 101.132.176.33
+    host: 47.103.0.246
     username: root
     password:
-      from_secret: 101.132.176.33
+      from_secret: yjy_password
     script:
     - cd /Winsper/admin-service/target
     - cp ../Dockerfile .
