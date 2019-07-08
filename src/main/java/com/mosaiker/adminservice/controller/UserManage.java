@@ -16,7 +16,6 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/admin")
 @Api(description = "管理员服务接口，仅能查询所有用户和解禁/封禁操作.")
 public class UserManage {
 
