@@ -55,15 +55,19 @@ public JSONObject changeStatus(
     Long uId = param.getLong("uId");
     JSONObject result = new JSONObject();
     User user = userInfoService.findUserByUId(uId);
-    if (user != null) {
+    if (user != null && user.getStatus()!=100) {
       int i = -user.getStatus();
       user.setStatus(i);
       userInfoService.update(user);
       result.put("status", i);
       result.put("message", "ok");
       return result;
-    } else {
+    } else if(user==null){
       result.put("message", "无法获取该用户信息");
+      return result;
+    }
+    else{
+      result.put("message","无法对管理员进行操作");
       return result;
     }
   }
