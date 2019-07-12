@@ -71,7 +71,7 @@ public class UserManageTest {
     mockList.add(new User(1000L, "username", "13011133377", 1));
     when(userInfoService.findAll()).thenReturn(mockList);
     String expected = "{\"userList\":[{\"uId\":1000,\"phone\":\"13011133377\",\"username\":\"username\",\"status\":1}],\"message\":\"ok\"}";
-    mockMvc.perform(MockMvcRequestBuilders.get("/admin/userList")
+    mockMvc.perform(MockMvcRequestBuilders.get("/userList")
         .accept(MediaType.APPLICATION_JSON))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(expected))
@@ -80,7 +80,7 @@ public class UserManageTest {
 
     when(userInfoService.findAll()).thenReturn(null);
     String expectedNull = "{\"message\":\"Oops,尚未有其他用户\"}";
-    mockMvc.perform(MockMvcRequestBuilders.get("/admin/userList")
+    mockMvc.perform(MockMvcRequestBuilders.get("/userList")
         .accept(MediaType.APPLICATION_JSON))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(expectedNull))
@@ -104,7 +104,7 @@ public class UserManageTest {
     String expected1 = "<JSONObject><message>ok</message><status>-1</status></JSONObject>";
     JSONObject mockParam = new JSONObject();
     mockParam.put("uId", "1000");
-    mockMvc.perform(MockMvcRequestBuilders.put("/admin/manage")
+    mockMvc.perform(MockMvcRequestBuilders.put("/manage")
         .contentType(MediaType.APPLICATION_JSON).content(mockParam.toJSONString()))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(expected1))
@@ -114,7 +114,7 @@ public class UserManageTest {
     mockParam.clear();
     mockParam.put("uId", "2000");
     String expected2 = "<JSONObject><message>无法获取该用户信息</message></JSONObject>";
-    mockMvc.perform(MockMvcRequestBuilders.put("/admin/manage")
+    mockMvc.perform(MockMvcRequestBuilders.put("/manage")
         .contentType(MediaType.APPLICATION_JSON).content(mockParam.toJSONString()))
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.content().string(expected2))
