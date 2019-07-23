@@ -47,10 +47,10 @@ public class UserManage {
     }
   }
 
-  @RequestMapping(value = "/manage", method = RequestMethod.POST)
+  @RequestMapping(value = "/manage", method = RequestMethod.PUT)
   @ApiOperation(value="返回用户当前状态，1为普通用户，2为会员，对应的负数表示已封禁",produces = "application/json")
-public JSONObject changeStatus(
-  @ApiParam(name="uId",value="用户ID",type = "long",example = "123456") @RequestBody JSONObject param) {
+  public JSONObject changeStatus(
+    @ApiParam(name="uId",value="用户ID",type = "long",example = "123456") @RequestBody JSONObject param) {
     Long uId = param.getLong("uId");
     JSONObject result = new JSONObject();
     User user = userInfoService.findUserByUId(uId);

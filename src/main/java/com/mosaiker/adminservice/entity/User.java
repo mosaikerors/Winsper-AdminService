@@ -22,7 +22,7 @@ public class User {
   private Long uId;
   private String username;
   private String phone;
-  @Range(max = 2,min = -2)
+  @Range(max = 200,min = -200)
   @ApiModelProperty(notes = "1表示普通用户，2表示会员,对应的负数表示被禁用", required = true, position = 3)
   private int status;
 
