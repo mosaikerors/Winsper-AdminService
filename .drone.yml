@@ -32,9 +32,8 @@ steps:
     username: root
     script:
       - cd /Winsper/admin-service/target
-      - cp ../Dockerfile .
-      - docker build -t winsper-admin-service .
-      - docker rm -f winsper-admin-service-c
+      - cp ../Dockerfile 
+      - docker build -t winsper-admin-service 
 
 volumes:
 - name: dependency
