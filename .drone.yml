@@ -22,7 +22,7 @@ steps:
       key:
         from_secret: private_key
       rm: true
-      target: /Winsper/winsper-admin
+      target: /root/test/Winsper/winsper-admin
       source:
         - target/admin-service-0.0.1-SNAPSHOT.jar
         - Dockerfile
@@ -35,8 +35,9 @@ steps:
       key:
         from_secret: private_key
       script:
-        - cd /root/test/drone-tmp/target
+        - cd /root/test/Winsper/winsper-admin/target
         - cp ../Dockerfile .
+        - docker rm -f deeell-test/winsper-admin
         - docker build -t deeell-test/winsper-admin .
 
 
