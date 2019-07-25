@@ -39,10 +39,10 @@ public class UserManage {
         userArray.add(oneUser);
       }
       result.put("userList",userArray);
-      result.put("message", "ok");
+      result.put("rescode", 0);
       return result;
     } else {
-      result.put("message", "Oops,尚未有其他用户");
+      result.put("rescode", 2);//Oops,尚未有其他用户
       return result;
     }
   }
@@ -59,10 +59,10 @@ public class UserManage {
       user.setStatus(i);
       userInfoService.update(user);
       result.put("status", i);
-      result.put("message", "ok");
+      result.put("rescode", 0);
       return result;
     } else {
-      result.put("message", "无法获取该用户信息");
+      result.put("rescode", 2);//无法获取该用户信息
       return result;
     }
   }
