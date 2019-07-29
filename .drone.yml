@@ -40,8 +40,7 @@ steps:
         - cp ../Dockerfile .
         - docker rm -f deeell-test/winsper-admin
         - docker build -t deeell-test/winsper-admin .
-        - docker login
-        - docker push deeell-test/winsper-admin
+ 
 
 
 volumes:
