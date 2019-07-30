@@ -1,5 +1,5 @@
 kind: pipline
-name: Winsper-AdminService
+name: winsper-admin
 
 steps:
   - name: test
