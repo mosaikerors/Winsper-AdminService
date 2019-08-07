@@ -54,7 +54,7 @@ public class UserManage {
     Long uId = param.getLong("uId");
     JSONObject result = new JSONObject();
     User user = userInfoService.findUserByUId(uId);
-    if (user != null) {
+    if (user != null && user.getStatus()!=100) {
       int i = -user.getStatus();
       user.setStatus(i);
       userInfoService.update(user);
