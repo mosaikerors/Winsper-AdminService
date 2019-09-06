@@ -2,31 +2,23 @@ package com.mosaiker.adminservice.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mosaiker.adminservice.entity.User;
-import com.mosaiker.adminservice.repository.UserInfoRepository;
 import com.mosaiker.adminservice.service.UserInfoService;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import org.junit.Assert;
+
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -50,7 +42,7 @@ public class UserManageTest {
   @Mock
   private UserInfoService userInfoService;
   @InjectMocks
-  private UserManage userManage;
+  private ManageController userManage;
 
   @Before
   public void before() throws Exception {
