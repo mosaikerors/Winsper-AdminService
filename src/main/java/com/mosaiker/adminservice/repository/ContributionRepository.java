@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ContributionRepository extends JpaRepository<Contribution, Long> {
-    Contribution findByCId(Long cId);
+
+    List<Contribution> findByCIdIn(List<Long> cIds);
 }

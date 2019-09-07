@@ -104,9 +104,13 @@ public class ManageController {
 
   @RequestMapping(value = "/check", method = RequestMethod.PUT)
   public JSONObject checkSubmission(@RequestBody JSONObject params) {
-    Contribution contribution = contributionRepository.findByCId(params.getLong("cId"));
-    contribution.setStatus(params.getIntValue("status"));
-    contributionRepository.save(contribution);
+    List<Long> cIds = params.getJSONArray("cIds").toJavaList(Long.class);
+    List<Contribution> contributions = contributionRepository.findByCIdIn(cIds);
+    int status = params.getIntValue("status");
+    for (Contribution contribution : contributions) {
+      contribution.setStatus(status);
+      contributionRepository.save(contribution);
+    }
     JSONObject result = new JSONObject();
     result.put("rescode", 0);
     return result;
